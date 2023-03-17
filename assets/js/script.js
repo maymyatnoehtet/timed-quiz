@@ -1,4 +1,5 @@
 var headerEl = document.querySelector("header");
+var mainEl = document.querySelector("main");
 var startButtonEl = document.querySelector(".start-button");
 
 /* quiz related elements */
@@ -6,13 +7,22 @@ var quizEl = document.getElementById("quiz");
 var quizQEl = document.getElementById("quizQ");
 var answerEl = document.getElementById("answers");
 
+/* quiz answers elements */
 var firstChoice = document.createElement("button");
 var secondChoice = document.createElement("button");
 var thirdChoice = document.createElement("button");
 var fourthChoice = document.createElement("button");
 
+/* timers */
+var timerElement = document.createElement("div");
 var timer;
-var timerCount;
+var timerCount = 50;
+timerElement.setAttribute('style','position: absolute; top: 4%; left: 90%; font-size: 1.2em;');
+mainEl.appendChild(timerElement);
+
+/* answer correct or not */
+var correctAnswerEl = document.createElement("div");
+mainEl.appendChild(correctAnswerEl);
 
 /* quiz questions */
 const quizQs = [
@@ -73,6 +83,7 @@ function startQuiz(){
     console.log("start button is clicked");
     console.log(headerEl.childNodes);
     clearStartPage();
+    startTimer();
     renderQuiz();
 }
 
@@ -102,12 +113,41 @@ function renderQuiz() {
     answerEl.appendChild(thirdChoice);
     answerEl.appendChild(fourthChoice);
 
-    firstChoice.setAttribute("style", "left: 0%; top: 10%");
-    secondChoice.setAttribute("style", "left: 0%; top: 17%");
-    thirdChoice.setAttribute("style", "left: 0%; top: 24%");
-    fourthChoice.setAttribute("style", "left: 0%; top: 31%");
+    firstChoice.setAttribute("style", "left: 15%; top: 25%");
+    secondChoice.setAttribute("style", "left: 15%; top: 32%");
+    thirdChoice.setAttribute("style", "left: 15%; top: 39%");
+    fourthChoice.setAttribute("style", "left: 15%; top: 46%");
+
+    firstChoice.addEventListener("click", check(random, "1"));
+    secondChoice.addEventListener("click", check(random, "2"));
+    thirdChoice.addEventListener("click", check(random, "3"));
+    fourthChoice.addEventListener("click", check(random, "4"));
 }
 
-/* set */
+/* start timer */
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+        timerCount--;
+        timerElement.textContent = "Time: " + timerCount;       
+        if (timerCount === 0) {
+            clearInterval(timer);
+            // finishGame();
+        }
+    }, 1000);
+}
+
+/*  check if the choice is correct or not */
+function check(quizObj, chosen) {
+    var correctAnswer = quizObj.correctAnswer;
+    if (chosen == correctAnswer) {
+        console.log("correct");
+        correctAnswerEl.textContent = "Correct";
+    }
+    else if(chosen != correctAnswer) {
+        console.log("wrong");
+        correctAnswerEl.textContent = "Wrong";
+    }
+}
 
 startButtonEl.addEventListener("click", startQuiz);
