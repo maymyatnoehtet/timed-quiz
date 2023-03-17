@@ -17,6 +17,7 @@ p {
 }
 
 button {
+    display: block;
     position: absolute; 
     left: 50%; 
     padding: 10px 25px; 
