@@ -19,50 +19,50 @@ const quizQs = [
     {
         question: "Commonly used data types do not include: ",
         choices: {
-            1: "strings",
-            2: "booleans",
-            3: "alerts",
-            4: "numbers"
+            1: "1. strings",
+            2: "2. booleans",
+            3: "3. alerts",
+            4: "4. numbers"
         },
         correctAnswer: "3"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
         choices: {
-            1: "JavaScript",
-            2: "terminal/bash",
-            3: "for loops",
-            4: "console.log"
+            1: "1. JavaScript",
+            2: "2. terminal/bash",
+            3: "3. for loops",
+            4: "4. console.log"
         },
         correctAnswer: "4"    
     },
     {
         question: "Arrays in JavaScript can be used to store _________.",
         choices: {
-            1: "numbers and strings",
-            2: "other arrays",
-            3: "booleans",
-            4: "all of the above"
+            1: "1. numbers and strings",
+            2: "2. other arrays",
+            3: "3. booleans",
+            4: "4. all of the above"
         },
         correctAnswer: "4"    
     },
     {
         question: "Inside which HTML element do we put the JavaScript?.",
         choices: {
-            1: "scripting",
-            2: "script",
-            3: "a",
-            4: "js"
+            1: "1. scripting",
+            2: "2. script",
+            3: "3. a",
+            4: "4. js"
         },
         correctAnswer: "2"    
     },
     {
         question: "Where is the correct place to insert a JavaScript file in HTML file?",
         choices: {
-            1: "<body>",
-            2: "<head>",
-            3: "<header>",
-            4: "all of the above"
+            1: "1. <body>",
+            2: "2. <head>",
+            3: "3. <header>",
+            4: "4. all of the above"
         },
         correctAnswer: "1"    
     }
@@ -102,9 +102,12 @@ function renderQuiz() {
     answerEl.appendChild(thirdChoice);
     answerEl.appendChild(fourthChoice);
 
-    firstChoice.setAttribute("style", "display: block;");
-    secondChoice.setAttribute("style", "display: block;");
-    thirdChoice.setAttribute("style", "display: block;");
-    fourthChoice.setAttribute("style", "display: block;");
+    firstChoice.setAttribute("style", "left: 0%; top: 10%");
+    secondChoice.setAttribute("style", "left: 0%; top: 17%");
+    thirdChoice.setAttribute("style", "left: 0%; top: 24%");
+    fourthChoice.setAttribute("style", "left: 0%; top: 31%");
 }
+
+/* set */
+
 startButtonEl.addEventListener("click", startQuiz);
